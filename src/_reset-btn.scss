@@ -1,0 +1,125 @@
+
+.skew-button {
+	cursor: pointer;
+	outline: none;
+	backface-visibility: hidden;
+	position: relative;
+	display: inline-block;
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	color: $white;
+    border-radius: 8px;
+	
+	span {
+		backface-visibility: hidden;
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding: 10px 20px;
+        border-radius: 8px;
+		z-index: 3;
+        text-transform: capitalize;
+	}
+	
+	&:before,
+	span:before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		border: 1px solid $white;
+        border-radius: 8px;
+		z-index: 2;
+	}
+	
+	span:before {
+		display: block;
+		transform: translate(-50%, -50%);
+		transform-origin: center center;
+        border-radius: 8px;
+        overflow: hidden;
+		z-indeX: -1;
+	}
+	
+	&:after {
+		transition: all 100ms ease-out;
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform: scaleX(0);
+		width: 100%;
+		height: 100%;
+		background-color: #0e3876;
+		border: 1px solid transparent;
+        border-radius: 8px;
+        overflow: hidden;
+		z-index: 1;
+	}
+	
+	&:hover {
+		span:before {
+			animation: fill .5s ease-out;
+			animation-fill-mode: forwards;
+            border-radius: 8px;
+            overflow: hidden;
+		}
+		
+		&:after {
+			animation: swoosh .7s ease-in;
+            border-radius: 8px;
+            overflow: hidden;
+		}
+	}
+	
+	&:active {
+		&:before {
+			background-color: darken(#0e3876, 20%);
+		}
+	}
+}
+
+@keyframes swoosh {
+	0% {
+		transform-origin: left center;
+	}
+	
+	20% {
+		transform: scaleX(1);
+		transform-origin: left center;
+        overflow: hidden;
+	}
+	
+	21% {
+		transform-origin: right center;
+	}
+	
+	50% {
+		transform: scaleX(0);
+		transform-origin: right center;
+	}
+}
+
+@keyframes fill {
+	0% {
+		background-color: rgba(#0e3876, 0);
+	}
+	
+	20% {
+		opacity: .5;
+		border-width: 10px;
+		border-color: darken(#0e3876, 10%);
+	}
+	
+	100% {
+        overflow: hidden;
+		opacity: .5;
+		border-width: 1px;
+		background-color: rgba(#0e3876, 0.5);
+	}
+}

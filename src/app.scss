@@ -1,0 +1,22 @@
+@import url('http://fonts.cdnfonts.com/css/sf-pro-display');
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flexBetweenCenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@import 'colors';
+@import 'header';
+@import 'content';
+@import 'reset-btn';
+
+body {
+    font-family: 'SF Pro Display', sans-serif;
+}
