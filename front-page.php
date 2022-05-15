@@ -187,7 +187,7 @@
                 </div>
                 <div class="col-xl-9">
                     <div class="brand-slider" style="position: relative">
-                        <div style="position: absolute; left: 0; top: 27%;" class="swiper-icon-prev">
+                        <div class="swiper-icon-prev">
                             <svg class="slide-indicators" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle class="slide-icon" cx="24" cy="24" r="23.5" transform="rotate(180 24 24)" stroke="black" fill="#fff"/>
                                 <path d="M27 18L21 24L27 30" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -214,7 +214,7 @@
                             </div>
                         </div>
 
-                        <div style="position: absolute; right: 0; top: 27%;" class="swiper-icon-next">
+                        <div class="swiper-icon-next">
                             <svg class="slide-indicators" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle class="slide-icon" cx="24" cy="24" r="23.5" stroke="black"/>
                                 <path d="M21 30L27 24L21 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -11928,6 +11928,16 @@ header .navbar-toggler .line3 {
 .content .content-footer .swiper-button-prev::after, .content .content-footer .swiper-button-next::after {
   content: "";
 }
+.content .content-footer .swiper-icon-next {
+  position: absolute;
+  right: 0;
+  top: 27%;
+}
+.content .content-footer .swiper-icon-prev {
+  position: absolute;
+  left: 0;
+  top: 27%;
+}
 .content .add-to-cart svg {
   transition: 0.3s ease;
 }

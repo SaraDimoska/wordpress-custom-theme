@@ -23,7 +23,6 @@ $('.cart').each(function(index) {
         let thisCart = $(this);
         let addedToCart = $(this).prev();
         let addedToCartPath = addedToCart.find('.check-path');
-        console.log(addedToCart);
         timeline.fromTo(thisCart, 0.3, {scale: '1'}, {scale: '0', transformOrigin: 'center left', ease: Power2.easeInOut })
         .fromTo(addedToCart, 1, {scale: '0'}, {scale: '1', ease: Elastic.easeOut.config(1, 0.7)})
         .to(addedToCartPath, 1, {fill: 'green'}, '-=0.8');
@@ -133,7 +132,6 @@ const tlSlide = new TimelineMax();
 
 $('.slide-indicators').each(function() {
     $(this).on('mouseenter', function() {
-        console.log('test');
         let previousSlideIcon = $(this).find('.slide-icon');
         let previousSlideIconStroke = previousSlideIcon.next();
 
@@ -141,7 +139,6 @@ $('.slide-indicators').each(function() {
         tlSlide.to(previousSlideIconStroke, {stroke: '#fff'}, '-=0.2');
     })
     $(this).on('mouseleave', function() {
-        console.log('test');
         let previousSlideIcon = $(this).find('.slide-icon')
         let previousSlideIconStroke = previousSlideIcon.next();
 
