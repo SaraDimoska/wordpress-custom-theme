@@ -3153,11 +3153,44 @@ function withinMaxClamp(min, value, max) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+ // Dropdown menu
 
-$('#lang-dropdown').click(function () {
-  $('.icon-rotates').toggleClass('la-angle-up');
-  $('.dropdown-menu').toggle();
+var tl = new TimelineMax();
+var isClickedIcon = false;
+$('#lang-dropdown').on('mouseover', function () {
+  var el = $(this);
+  tl.to(el, {
+    css: {
+      borderBottom: '2px solid #FDCD0B'
+    }
+  });
 });
+$('#lang-dropdown').on('mouseleave', function () {
+  var el = $(this);
+  tl.to(el, {
+    css: {
+      borderBottom: '2px solid #fff'
+    }
+  });
+});
+$('#lang-dropdown').on('click', function () {
+  var icon = $('.la-angle-down');
+
+  if (!isClickedIcon) {
+    tl.to(icon, {
+      rotation: 180
+    });
+    isClickedIcon = true;
+  } else {
+    tl.to(icon, {
+      rotation: 0
+    });
+    isClickedIcon = false;
+  }
+
+  $('.dropdown-menu').toggle();
+}); // Add to wishlist icon
+
 $(function () {
   $(document).on('click', '.wish-btn', function (e) {
     $(this).children('.la-heart').toggleClass('las').toggleClass('animate-like');
@@ -3172,46 +3205,29 @@ timeline.fromTo(check, {
   ease: Power2.easeInOut
 }); // Add to cart icon 
 
-$('.cart').each(function (index) {
+var added = false;
+$('.add-to-cart').each(function (index) {
   $(this).on('click', function () {
-    var thisCart = $(this);
-    var addedToCart = $(this).prev();
-    var addedToCartPath = addedToCart.find('.check-path');
-    timeline.fromTo(thisCart, 0.3, {
-      scale: '1'
-    }, {
-      scale: '0',
-      transformOrigin: 'center left',
-      ease: Power2.easeInOut
-    }).fromTo(addedToCart, 1, {
-      scale: '0'
-    }, {
-      scale: '1',
-      ease: Elastic.easeOut.config(1, 0.7)
-    }).to(addedToCartPath, 1, {
-      fill: 'green'
-    }, '-=0.8');
-  });
-});
-$('.check').each(function (index) {
-  $(this).on('click', function () {
-    var thisCheck = $(this);
-    var addToCart = $(this).next();
-    var addedToCartPath = thisCheck.find('.check-path');
-    timeline.to(addedToCartPath, 0.5, {
-      fill: '#000000'
-    }).fromTo(thisCheck, {
-      scale: '1'
-    }, {
-      scale: '0',
-      transformOrigin: 'center left',
-      ease: Power2.easeInOut
-    }).fromTo(addToCart, 1, {
-      scale: '0'
-    }, {
-      scale: '1',
-      ease: Elastic.easeOut.config(1, 1)
-    });
+    var addedToCart = $(this).find('.cart').next();
+    var thisCheck = $(this).find('.check');
+
+    if (!added) {
+      timeline.fromTo(addedToCart, 1, {
+        scale: '0'
+      }, {
+        scale: '1',
+        ease: Power2.easeInOut
+      });
+      added = true;
+    } else {
+      timeline.fromTo(thisCheck, {
+        scale: '1'
+      }, {
+        scale: '0',
+        ease: Power2.easeInOut
+      });
+      added = false;
+    }
   });
 }); // Compare icon
 
@@ -3346,6 +3362,22 @@ $('.slide-indicators').each(function () {
     tlSlide.to(previousSlideIconStroke, {
       stroke: '#000'
     }, '-=0.2');
+  });
+}); // Card image
+
+var tlImage = new TimelineMax();
+$('.product-img').each(function () {
+  $(this).on('mouseenter', function () {
+    var image = $(this);
+    tlSlide.to(image, 0.5, {
+      scale: 1.1
+    });
+  });
+  $(this).on('mouseleave', function () {
+    var image = $(this);
+    tlSlide.to(image, 0.5, {
+      scale: 1
+    });
   });
 });
 

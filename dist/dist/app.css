@@ -11310,6 +11310,9 @@ header a {
   text-decoration: none;
   color: #000;
 }
+header a:hover {
+  color: #000;
+}
 @media (max-width: 855px) {
   header .navbar-search-input {
     padding-right: 30px;
@@ -11396,9 +11399,13 @@ header .navbar-icons .shopping-bag-icon .shopping-bag-indicator {
   line-height: 18px;
   text-align: center;
 }
+header .dropdown #lang-dropdown {
+  border-bottom: 2px solid #fff;
+}
 header .dropdown .dropdown-menu {
   padding: 0;
   min-width: 10px;
+  transition: 0.3s ease-in;
 }
 header .dropdown:hover {
   cursor: pointer;
